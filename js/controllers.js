@@ -22,9 +22,9 @@ angular.module('myapp.controllers', [])
     });*/
 
 
-  $scope.clear = function() {
-    $scope.notes = Note.clear();
-  }
+$scope.clear = function() {
+  $scope.notes = Note.clear();
+}
 })
 .controller('NoteCtrl', function($scope, $stateParams, $location, Note){
   $scope.note = Note.get($stateParams.note_id);
@@ -40,11 +40,16 @@ angular.module('myapp.controllers', [])
   };
 })
 .controller("SearchMovieCtrl", function($scope, Movie){
-  Movie.get(551).then(function(data){
-    console.log(data.data);
-    $scope.movie = data.data;
-  }, function(err){
-    console.error(err);
-  });
-})
-;
+  $scope.movies = [];
+  $scope.keyPress = function(query)
+  {
+
+
+    Movie.all(query).then(function(capsule){
+      $scope.movies = capsule.data.data;
+      console.log(data.data);
+    }, function(err){
+      console.error(err);
+    });
+  }
+});
