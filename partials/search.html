@@ -1,8 +1,20 @@
-<div ng-controller="SearchMovieCtrl">
-
-    <div class="movie" ng-repeat="movie in movies">
-        <p>{{movie.original_title}}</p>
-        <a href=""><img src="https://api.themoviedb.org/3{{movie.poster_path}}"></a>
-    </div>
-    
-    </div>
+<script src="../js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-ui-router.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/controllers.js"></script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/services.js"></script>
+    <body ng-app="myapp">
+		<div ng-controller="SearchMovieCtrl">
+		    <div class="movie">
+		    {{movie}}
+		        <p>{{movie.original_title}}</p>
+		        <a href=""><img src="http://image.tmdb.org/t/p/w342/{{movie.poster_path}}"></a>
+		    </div>
+		    
+		</div>
+  </body>
