@@ -65,10 +65,23 @@ $scope.clear = function() {
     videotheque = JSON.parse(videotheque);
     var film = "";
     Movie.get(id).then(function(data){
-                film = Array(data.data.id, data.data.title, 1);
-                if (!Array.isArray(videotheque))
-                    videotheque = Array();
-                videotheque.push(film);
+                var loue = false;
+                for (var i = 0; i < videotheque.length; i++)
+                {
+                  if (videotheque[i][0] == id)  {
+                      loue = true;
+                      break;
+                    }
+                }
+
+                if (!loue) {
+                  film = Array(data.data.id, data.data.title, 1);
+                  if (!Array.isArray(videotheque))
+                      videotheque = Array();
+                  videotheque.push(film);
+
+                }
+
                 localStorage.setItem("videotheque", JSON.stringify(videotheque));
                 console.debug(localStorage.getItem('videotheque'))
     });
@@ -79,13 +92,14 @@ $scope.clear = function() {
             videotheque = JSON.parse(videotheque);
             for (var i = 0; i < videotheque.length; i++)
             {
-                //console.debug(videotheque);
                 console.debug(videotheque[i][0] == id);
-                if (videotheque[i][0] == id)
-                    videotheque.slice(i, 1);
-                //console.debug(videotheque);
+                if (videotheque[i][0] == id)  {
+                    videotheque.splice(i, 1);
+                    break;
+                  }
             }
+            
             localStorage.setItem("videotheque", JSON.stringify(videotheque));
-    console.debug(localStorage.getItem('videotheque'))
+            console.debug(localStorage.getItem('videotheque'))
         };
 });
