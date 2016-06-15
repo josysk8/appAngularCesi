@@ -43,9 +43,10 @@ $scope.clear = function() {
   $scope.movies = [];
   $scope.keyPress = function(query)
   {
-    Movie.all(query).then(function(capsule){
-      $scope.movies = capsule.data.data;
-      console.log(data.data);
+    Movie.all(query).then(function(data){
+
+      $scope.movies = data.data['results'];
+      console.log(data.data['results']);
     }, function(err){
       console.error(err);
     });
