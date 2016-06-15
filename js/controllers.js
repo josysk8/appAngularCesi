@@ -68,6 +68,7 @@ $scope.clear = function() {
           }
       }
       $scope.isPret = isPret;
+      console.debug(isPret);
 
   }, function(err){
     console.error(err);
@@ -96,7 +97,7 @@ $scope.clear = function() {
                 }
 
                 localStorage.setItem("videotheque", JSON.stringify(videotheque));
-                console.debug(localStorage.getItem('videotheque'))
+                $route.reload();
     });
         };
 
@@ -114,6 +115,7 @@ $scope.clear = function() {
             
             localStorage.setItem("videotheque", JSON.stringify(videotheque));
             console.debug(localStorage.getItem('videotheque'))
+            $route.reload();
         };
 })
     .controller("PretCtrl", function($scope, Movie){
