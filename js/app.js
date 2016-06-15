@@ -26,15 +26,17 @@ angular.module('myapp',
       controller: 'NoteCtrl'
     })
     .state('movie', {
-      url: '/movie',
+      url: '/movie/:movie_id',
       templateUrl: 'partials/movie.html',
-      controller: 'MovieCtrl',
+      controller: 'MovieCtrl'
+      /*,
       views:{
         'sidebar' : {
           templateUrl: "movieSidebar.html",
           controller: "SidebarCtrl"
         }
       }
+      */
     })
     .state('search', {
       url: '/search',
