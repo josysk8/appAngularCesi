@@ -36,6 +36,11 @@ angular.module('myapp',
         }
       }
     })
+    .state('search', {
+      url: '/search',
+      templateUrl : 'partials/search.html',
+      controller: 'MovieCtrl',
+    })
     ;
 
   $urlRouterProvider.otherwise("/search");
