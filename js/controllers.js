@@ -40,7 +40,7 @@ angular.module('myapp.controllers', [])
   };
 })
 .controller("SearchMovieCtrl", function($scope, Movie){
-  Movie.get(551).then(function(data){
+  Movie.get(246655).then(function(data){
     console.log(data.data);
     $scope.movie = data.data;
   }, function(err){
@@ -54,5 +54,18 @@ angular.module('myapp.controllers', [])
         }, function(err){
             console.error(err);
         });
+
+        var addVideotheque = function(id){
+            var videotheque = localStorage.getItem("videotheque");
+            videotheque = JSON.parse(videotheque);
+            var film = "";
+            Movie.get(id).then(function(data){
+                film = data.data;
+            });
+            film = Array(data.id, data.title, 1);
+            Array.prototype.push.apply(videotheque, film);
+            localStorage.setItem("videotheque", videotheque);
+            console.debug(localStorage.getItem('videotheque'))
+        }
     })
 ;
