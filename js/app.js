@@ -5,10 +5,10 @@ angular.module('myapp',
                  $urlRouterProvider){
 
   $stateProvider
-    .state('notes', {
-      url: '/notes',
-      templateUrl:'partials/notes.html',
-      controller: 'NotesCtrl'
+    .state('detail', {
+      url: '/movie',
+      templateUrl:'partials/movie.html',
+      controller: 'MovieCtrl'
     })
     .state('add-note',{
       url: '/notes/add',
@@ -26,7 +26,7 @@ angular.module('myapp',
       controller: 'NoteCtrl'
     })
     .state('movie', {
-      url: '/movie',
+      url: '/movise',
       templateUrl: 'partials/movie.html',
       controller: 'MovieCtrl',
       views:{

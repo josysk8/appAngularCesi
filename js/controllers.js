@@ -47,4 +47,12 @@ angular.module('myapp.controllers', [])
     console.error(err);
   });
 })
+    .controller("MovieCtrl", function($scope, Movie){
+        Movie.get(551).then(function(data){
+            console.log(data.data);
+            $scope.movie = data.data;
+        }, function(err){
+            console.error(err);
+        });
+    })
 ;

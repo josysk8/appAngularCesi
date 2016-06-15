@@ -1,9 +1,45 @@
 Mon film
-<h1>{{movie.title}}</h1>
-<p>{{movie.overview}}</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="bg-primary center" ng-controller="MovieCtrl">
+            <h1>{{movie.title}}</h1>
+            <p>{{movie.overview}}</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="right">Genres : </p>
+                </div>
+                <div class="col-md-8">
+                    <ul class="left">
+                        <li ng-repeat="genre in movie.genres" class="inline-list">
+                            &nbsp;{{genre.name}} -
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 <h2>Genres</h2>
-<ul>
-  <li ng-repeat="genre in movie.genres">
-    {{genre.name}}
-  </li>
-</ul>
+
+
+<style>
+    .center{
+        text-align: center;
+    }
+    .inline-list{
+        display: inline-block;
+        list-style-type: none;
+    }
+    .inline-block{
+        display: inline-block;
+    }
+    .left{
+        text-align: left;;
+    }
+    .right{
+        text-align: right;;
+    }
+</style>
