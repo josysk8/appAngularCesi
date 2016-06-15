@@ -39,7 +39,7 @@ angular.module('myapp',
     .state('search', {
       url: '/search',
       templateUrl : 'partials/search.html',
-      controller: 'MovieCtrl',
+      controller: 'SearchMovieCtrl',
     })
     ;
 
