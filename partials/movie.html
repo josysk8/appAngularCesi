@@ -9,8 +9,8 @@
                             <a href="#/list">Retour</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="" ng-click="addVideotheque(movie.id)">Louer</a>
-                            <a href="" ng-click="deleteVideotheque(movie.id)">Louer</a>
+                            <a href="" ng-click="addVideotheque(movie.id)" ng-show="isPret == false">Louer</a>
+                            <a href="" ng-click="deleteVideotheque(movie.id)" ng-show="isPret == true">Delete</a>
                         </div>
                     </div>
                 </div>
