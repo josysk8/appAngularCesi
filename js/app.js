@@ -10,10 +10,10 @@ angular.module('myapp',
       templateUrl:'partials/movie.html',
       controller: 'MovieCtrl'
     })
-    .state('add-note',{
-      url: '/notes/add',
-      templateUrl:'partials/new.html',
-      controller: "NoteCtrl"
+    .state('list',{
+      url: '/list',
+      templateUrl:'partials/search.html',
+      controller: "SearchMovieCtrl"
     })
     .state('note', {
       url: '/notes/:note_id',
