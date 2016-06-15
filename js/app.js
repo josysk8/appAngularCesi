@@ -26,7 +26,7 @@ angular.module('myapp',
       controller: 'NoteCtrl'
     })
     .state('movie', {
-      url: '/movise',
+      url: '/movie',
       templateUrl: 'partials/movie.html',
       controller: 'MovieCtrl',
       views:{
@@ -38,5 +38,5 @@ angular.module('myapp',
     })
     ;
 
-  $urlRouterProvider.otherwise("/movie");
+  $urlRouterProvider.otherwise("/search");
 });
