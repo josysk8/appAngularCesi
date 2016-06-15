@@ -1,3 +1,4 @@
+
 <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
@@ -10,6 +11,7 @@
     <script src="../js/services.js"></script>
     <body ng-app="myapp">
 		<div ng-controller="SearchMovieCtrl">
+            <input type="text" ng-model="search" ng-keyup="keyPress(search)">
 		    <div class="movie">
 		    {{movie}}
 		        <p>{{movie.original_title}}</p>
@@ -18,3 +20,4 @@
 		    
 		</div>
   </body>
+
