@@ -1,0 +1,35 @@
+<div ng-repeat="movie in movies">
+    <div class="center" ng-controller="MovieCtrl">
+        <div class="row bg-info">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="#/list">Retour</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="" ng-click="deleteVideotheque(movie.id)">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 bg-primary padding10">
+                <h1>{{movie.title}}</h1>
+                <p>{{movie.overview}}</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="right">Genres : </p>
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="left">
+                            <li ng-repeat="genre in movie.genres" class="inline-list">
+                                &nbsp;{{genre.name}} -
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

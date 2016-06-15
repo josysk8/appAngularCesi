@@ -30,10 +30,10 @@
             <logo></logo>
             <div class="row">
                 <div class="col-md-3">
-
+                    <a href="/#/pret">Voir mes films loués</a>
                 </div>
                 <div class="col-md-6">
-                    <h1 class="center">GodFliX</h1>
+                    <h1 class="center"><a href="/#/search">GodFliX</a></h1>
                 </div>
                 <div class="col-md-3"></div>
             </div>
@@ -42,5 +42,9 @@
     <content class="row">
         <ui-view class="col-md-8 col-md-offset-2"></ui-view>
     </content>
+
+    <div ng-controller="SearchMovieCtrl">
+    <p>{{movie}}</p>
+    </div>
 </body>
 </html>

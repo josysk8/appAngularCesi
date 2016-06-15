@@ -56,6 +56,19 @@ $scope.clear = function() {
   Movie.get($stateParams.movie_id).then(function(data){
     console.log(data.data);
     $scope.movie = data.data;
+      var isPret = false;
+      var videotheque = localStorage.getItem("videotheque");
+      videotheque = JSON.parse(videotheque);
+      for (var i = 0; i < videotheque.length; i++)
+      {
+          if (videotheque[i][0] == $stateParams.movie_id)
+          {
+              isPret = true;
+              break;
+          }
+      }
+      $scope.isPret = isPret;
+
   }, function(err){
     console.error(err);
   });
@@ -102,4 +115,18 @@ $scope.clear = function() {
             localStorage.setItem("videotheque", JSON.stringify(videotheque));
             console.debug(localStorage.getItem('videotheque'))
         };
-});
+})
+    .controller("PretCtrl", function($scope, Movie){
+        var videotheque = localStorage.getItem("videotheque");
+        videotheque = JSON.parse(videotheque);
+        var filmsList = Array();
+        var tmp = null;
+        for(var i = 0; i < videotheque.length; i++)
+        {
+            Movie.get(videotheque[i][0]).then(function(data){
+                tmp = data.data;
+                filmsList.push(tmp);
+            });
+        }
+        $scope.movies = filmsList;
+    });
