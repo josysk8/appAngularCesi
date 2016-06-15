@@ -26,7 +26,7 @@ angular.module('myapp',
       controller: 'NoteCtrl'
     })
     .state('movie', {
-      url: '/movie',
+      url: '/movie/:movie_id',
       templateUrl: 'partials/movie.html',
       controller: 'MovieCtrl',
       views:{
