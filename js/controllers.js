@@ -52,40 +52,24 @@ $scope.clear = function() {
     });
   }
 })
-    .controller("MovieCtrl", function($scope, Movie){
-        Movie.get(551).then(function(data){
-            console.log(data.data);
-            $scope.movie = data.data;
-        }, function(err){
-            console.error(err);
-        });
+.controller("MovieCtrl", function($scope,$stateParams, Movie){
+  Movie.get($stateParams.movie_id).then(function(data){
+    console.log(data.data);
+    $scope.movie = data.data;
+  }, function(err){
+    console.error(err);
+  });
 
-        $scope.addVideotheque = function(id){
-            var videotheque = localStorage.getItem("videotheque");
-            videotheque = JSON.parse(videotheque);
-            var film = "";
-            Movie.get(id).then(function(data){
-                film = Array(data.data.id, data.data.title, 1);
-                if (!Array.isArray(videotheque))
-                    videotheque = Array();
-                videotheque.push(film);
-                localStorage.setItem("videotheque", JSON.stringify(videotheque));
-                console.debug(localStorage.getItem('videotheque'))
-            });
-        };
-
-        $scope.deleteVideotheque = function(id){
-            var videotheque = localStorage.getItem('videotheque');
-            videotheque = JSON.parse(videotheque);
-            for (var i = 0; i < videotheque.length; i++)
-            {
-                //console.debug(videotheque);
-                console.debug(videotheque[i][0] == id);
-                if (videotheque[i][0] == id)
-                    videotheque.slice(i, 1);
-                //console.debug(videotheque);
-            }
-            localStorage.setItem("videotheque", JSON.stringify(videotheque));
-            console.debug(localStorage.getItem('videotheque'))
-        };
+  var addVideotheque = function(id){
+    var videotheque = localStorage.getItem("videotheque");
+    videotheque = JSON.parse(videotheque);
+    var film = "";
+    Movie.get(id).then(function(data){
+      film = data.data;
     });
+    film = Array(data.id, data.title, 1);
+    Array.prototype.push.apply(videotheque, film);
+    localStorage.setItem("videotheque", videotheque);
+    console.debug(localStorage.getItem('videotheque'))
+  }
+});
