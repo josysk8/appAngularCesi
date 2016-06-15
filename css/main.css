@@ -300,3 +300,19 @@ textarea {
 .padding10{
     padding: 10px;
 }
+
+h1 a{
+    color: white;
+}
+
+h1 a:hover{
+    color: white;
+}
+
+h1 a:active{
+    color: white;
+}
+
+header a{
+    color: white !important;
+}

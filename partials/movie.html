@@ -6,10 +6,11 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="#/list">Retour</a>
+                            <a href="#/search">Retour</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="" ng-click="addVideotheque({{movie.id}})">Louer</a>
+                            <a href="" ng-click="addVideotheque(movie.id)" ng-show="isPret == false">Louer</a>
+                            <a href="" ng-click="deleteVideotheque(movie.id)" ng-show="isPret == true">Delete</a>
                         </div>
                     </div>
                 </div>
@@ -26,7 +27,15 @@
                             <ul class="left">
                                 <li ng-repeat="genre in movie.genres" class="inline-list">
                                     &nbsp;{{genre.name}} -
+                                </li><br>
+                                <li  class="inline-list">
+                                    &nbsp;<img ng-src="http://image.tmdb.org/t/p/w342{{movie.backdrop_path}}">
+                                    <img ng-src="http://image.tmdb.org/t/p/w342{{movie.poster_path}}">
+                                    <img ng-src="http://image.tmdb.org/t/p/w342{{movie.belongs_to_collection.backdrop_path}}">
+                                    <img ng-src="http://image.tmdb.org/t/p/w342{{movie.belongs_to_collection.poster_path}}">
+                                    
                                 </li>
+                                <!--{{movie}}backdrop_path-->
                             </ul>
                         </div>
                     </div>

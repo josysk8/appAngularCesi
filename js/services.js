@@ -4,16 +4,15 @@ angular.module('myapp.services', [])
 
   return {
     apiKey: '58f8fe741b03b0ae4c9a2ed080e94041',
-    url: "http://api.themoviedb.org/3/",
+    url: "https://api.themoviedb.org/3/",
     get: function(id){
       return $http.get(
         this.url +
         "movie/" +
         id +
-        "?api_key=" + this.apiKey);
+        "?api_key=" + this.apiKey, "&append_to_response=images");
     },
     search: function() {
-
     },
     all: function(query){
       var url =  this.url + "search/movie/"+ "?api_key=" + this.apiKey+ "&query="+query;

@@ -56,20 +56,77 @@ $scope.clear = function() {
   Movie.get($stateParams.movie_id).then(function(data){
     console.log(data.data);
     $scope.movie = data.data;
+      var isPret = false;
+      var videotheque = localStorage.getItem("videotheque");
+      videotheque = JSON.parse(videotheque);
+      for (var i = 0; i < videotheque.length; i++)
+      {
+          if (videotheque[i][0] == $stateParams.movie_id)
+          {
+              isPret = true;
+              break;
+          }
+      }
+      $scope.isPret = isPret;
+
   }, function(err){
     console.error(err);
   });
 
-  var addVideotheque = function(id){
+        $scope.addVideotheque = function(id){
     var videotheque = localStorage.getItem("videotheque");
     videotheque = JSON.parse(videotheque);
     var film = "";
     Movie.get(id).then(function(data){
-      film = data.data;
+                var loue = false;
+                for (var i = 0; i < videotheque.length; i++)
+                {
+                  if (videotheque[i][0] == id)  {
+                      loue = true;
+                      break;
+                    }
+                }
+
+                if (!loue) {
+                  film = Array(data.data.id, data.data.title, 1);
+                  if (!Array.isArray(videotheque))
+                      videotheque = Array();
+                  videotheque.push(film);
+
+                }
+
+                localStorage.setItem("videotheque", JSON.stringify(videotheque));
+                console.debug(localStorage.getItem('videotheque'))
     });
-    film = Array(data.id, data.title, 1);
-    Array.prototype.push.apply(videotheque, film);
-    localStorage.setItem("videotheque", videotheque);
-    console.debug(localStorage.getItem('videotheque'))
-  }
-});
+        };
+
+        $scope.deleteVideotheque = function(id){
+            var videotheque = localStorage.getItem('videotheque');
+            videotheque = JSON.parse(videotheque);
+            for (var i = 0; i < videotheque.length; i++)
+            {
+                console.debug(videotheque[i][0] == id);
+                if (videotheque[i][0] == id)  {
+                    videotheque.splice(i, 1);
+                    break;
+                  }
+            }
+            
+            localStorage.setItem("videotheque", JSON.stringify(videotheque));
+            console.debug(localStorage.getItem('videotheque'))
+        };
+})
+    .controller("PretCtrl", function($scope, Movie){
+        var videotheque = localStorage.getItem("videotheque");
+        videotheque = JSON.parse(videotheque);
+        var filmsList = Array();
+        var tmp = null;
+        for(var i = 0; i < videotheque.length; i++)
+        {
+            Movie.get(videotheque[i][0]).then(function(data){
+                tmp = data.data;
+                filmsList.push(tmp);
+            });
+        }
+        $scope.movies = filmsList;
+    });

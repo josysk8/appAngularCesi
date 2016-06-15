@@ -11,10 +11,11 @@
     <script src="../js/services.js"></script>
     <body ng-app="myapp">
 		<div ng-controller="SearchMovieCtrl">
+        
             <input type="text" ng-model="search" ng-keyup="keyPress(search)">
             <div class="movie_Accueil" ng-repeat="movie in movies">
 		        <p>{{movie.original_title}}</p>
-		        <a href=""><img src="http://image.tmdb.org/t/p/w342/{{movie.poster_path}}"></a>
+		        <a href="#/movie/{{movie.id}}"><img ng-src="http://image.tmdb.org/t/p/w342{{movie.poster_path}}"></a>
 		    </div>
 
 		</div>
