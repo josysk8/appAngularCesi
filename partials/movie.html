@@ -1,0 +1,9 @@
+Mon film
+<h1>{{movie.title}}</h1>
+<p>{{movie.overview}}</p>
+<h2>Genres</h2>
+<ul>
+  <li ng-repeat="genre in movie.genres">
+    {{genre.name}}
+  </li>
+</ul>

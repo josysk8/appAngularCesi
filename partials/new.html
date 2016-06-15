@@ -1,0 +1,15 @@
+<h1>Nouvelle note</h1>
+
+<form ng-submit="save()">
+  <p>
+    <label>Titre</label>
+    <input type="text" ng-model="note.title">
+  </p>
+  <p>
+    <label>Body</label>
+    <textarea ng-model="note.body"></textarea>
+  </p>
+  <p>
+    <input type="submit" value="Sauvegarder">
+  </p>
+</form>

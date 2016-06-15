@@ -1,0 +1,8 @@
+<h1>Notes</h1>
+<div ng-repeat="note in notes track by $index">
+  <a href="#/notes/{{$index}}">
+    {{note.title}}
+  </a>
+</div>
+<a ng-click="clear()">Supprimer toutes les notes</a>
+<a href="#/notes/add">Ajouter une note</a>
