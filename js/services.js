@@ -14,8 +14,23 @@ angular.module('myapp.services', [])
     },
     search: function() {
 
-    }
+    },
+    all: function(){
+      var defered = $q.defer();
+      var that = this;
 
+      $timeout(function(){
+        defered.notify('75%');
+      }, 1500);
+
+      $timeout(function(){
+        defered.notify('100%');
+        defered.resolve(that.notes);
+        //defered.reject({message: "Connection timeout"});
+      }, 2000);
+
+      return defered.promise;
+    },
   };
 })
 

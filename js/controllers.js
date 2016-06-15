@@ -39,7 +39,7 @@ angular.module('myapp.controllers', [])
     $location.path("/notes");
   };
 })
-.controller("MovieCtrl", function($scope, Movie){
+.controller("SearchMovieCtrl", function($scope, Movie){
   Movie.get(551).then(function(data){
     console.log(data.data);
     $scope.movie = data.data;
