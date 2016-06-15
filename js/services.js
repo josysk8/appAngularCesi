@@ -18,6 +18,7 @@ angular.module('myapp.services', [])
     all: function(query){
       var url =  this.url + "search/movie/"+ "?api_key=" + this.apiKey+ "&query="+query;
       return $http.get("proxy.php?url=" + encodeURIComponent(url));
+
       /*return $http.get(
         this.url +
         "search/movie/"+
