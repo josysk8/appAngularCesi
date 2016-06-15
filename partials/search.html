@@ -1,8 +1,9 @@
 <div ng-controller="SearchMovieCtrl">
+        <input type="text" ng-model="search" ng-keyup="keyPress(search)">
 
     <div class="movie" ng-repeat="movie in movies">
         <p>{{movie.original_title}}</p>
         <a href=""><img src="https://api.themoviedb.org/3{{movie.poster_path}}"></a>
     </div>
-    
+
     </div>
