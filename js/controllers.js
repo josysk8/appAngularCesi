@@ -22,9 +22,9 @@ angular.module('myapp.controllers', [])
     });*/
 
 
-  $scope.clear = function() {
-    $scope.notes = Note.clear();
-  }
+$scope.clear = function() {
+  $scope.notes = Note.clear();
+}
 })
 .controller('NoteCtrl', function($scope, $stateParams, $location, Note){
   $scope.note = Note.get($stateParams.note_id);
@@ -40,32 +40,15 @@ angular.module('myapp.controllers', [])
   };
 })
 .controller("SearchMovieCtrl", function($scope, Movie){
-  Movie.get(246655).then(function(data){
-    console.log(data.data);
-    $scope.movie = data.data;
-  }, function(err){
-    console.error(err);
-  });
-})
-    .controller("MovieCtrl", function($scope, Movie){
-        Movie.get(551).then(function(data){
-            console.log(data.data);
-            $scope.movie = data.data;
-        }, function(err){
-            console.error(err);
-        });
+  $scope.movies = [];
+  $scope.keyPress = function(query)
+  {
+    Movie.all(query).then(function(data){
 
-        var addVideotheque = function(id){
-            var videotheque = localStorage.getItem("videotheque");
-            videotheque = JSON.parse(videotheque);
-            var film = "";
-            Movie.get(id).then(function(data){
-                film = data.data;
-            });
-            film = Array(data.id, data.title, 1);
-            Array.prototype.push.apply(videotheque, film);
-            localStorage.setItem("videotheque", videotheque);
-            console.debug(localStorage.getItem('videotheque'))
-        }
-    })
-;
+      $scope.movies = data.data['results'];
+      console.log(data.data['results']);
+    }, function(err){
+      console.error(err);
+    });
+  }
+});
