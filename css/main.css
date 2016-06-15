@@ -280,3 +280,23 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+.center{
+    text-align: center;
+}
+.inline-list{
+    display: inline-block;
+    list-style-type: none;
+}
+.inline-block{
+    display: inline-block;
+}
+.left{
+    text-align: left;;
+}
+.right{
+    text-align: right;;
+}
+.padding10{
+    padding: 10px;
+}

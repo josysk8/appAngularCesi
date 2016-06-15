@@ -40,6 +40,7 @@ $scope.clear = function() {
   };
 })
 .controller("SearchMovieCtrl", function($scope, Movie){
+<<<<<<< HEAD
   $scope.movies = [];
   $scope.keyPress = function(query)
   {
@@ -53,3 +54,21 @@ $scope.clear = function() {
     });
   }
 });
+=======
+  Movie.get(551).then(function(data){
+    console.log(data.data);
+    $scope.movie = data.data;
+  }, function(err){
+    console.error(err);
+  });
+})
+    .controller("MovieCtrl", function($scope, Movie){
+        Movie.get(551).then(function(data){
+            console.log(data.data);
+            $scope.movie = data.data;
+        }, function(err){
+            console.error(err);
+        });
+    })
+;
+>>>>>>> 5f5ae697e434022343bdfb6df2ce2cb345270c67
