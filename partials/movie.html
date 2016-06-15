@@ -27,7 +27,15 @@
                             <ul class="left">
                                 <li ng-repeat="genre in movie.genres" class="inline-list">
                                     &nbsp;{{genre.name}} -
+                                </li><br>
+                                <li  class="inline-list">
+                                    &nbsp;<img ng-src="http://image.tmdb.org/t/p/w342{{movie.backdrop_path}}">
+                                    <img ng-src="http://image.tmdb.org/t/p/w342{{movie.poster_path}}">
+                                    <img ng-src="http://image.tmdb.org/t/p/w342{{movie.belongs_to_collection.backdrop_path}}">
+                                    <img ng-src="http://image.tmdb.org/t/p/w342{{movie.belongs_to_collection.poster_path}}">
+                                    
                                 </li>
+                                <!--{{movie}}backdrop_path-->
                             </ul>
                         </div>
                     </div>
